@@ -1,5 +1,5 @@
 // dfs.js
-
+// Обход графа в глубину (DFS)
 function dfs(graph, start, visited = new Set()) {
   visited.add(start);
   console.log(start);
@@ -10,7 +10,13 @@ function dfs(graph, start, visited = new Set()) {
   }
 }
 
+// Поиск длины пути между двумя вершинами с обработкой ошибок
 function dfsPathLength(graph, start, end) {
+  // Проверка: обе вершины должны быть в графе
+  if (!(start in graph) || !(end in graph)) {
+    throw new Error(`Одна или обе вершины (${start}, ${end}) отсутствуют в графе или некорректны`);
+  }
+
   const stack = [[start, 0]];
   const visited = new Set();
 
@@ -29,6 +35,7 @@ function dfsPathLength(graph, start, end) {
 
   return -1; // путь не найден
 }
+
 
 // Пример графа
 const edges = [
@@ -49,8 +56,15 @@ for (const [u, v] of edges) {
 
 // Проверка длины пути
 const startNode = 2;
-const endNode = 4;
-console.log(`Длина пути от ${startNode} до ${endNode}: ${dfsPathLength(graph, startNode, endNode)}`);
+const endNode = 999;
+// console.log(`Длина пути от ${startNode} до ${endNode}: ${dfsPathLength(graph, startNode, endNode)}`);
+
+try {
+  const length = dfsPathLength(graph, startNode, endNode);
+  console.log(`Длина пути от ${startNode} до ${endNode}: ${length}`);
+} catch (error) {
+  console.error("Ошибка:", error.message);
+}
 
 // Запуск DFS
 dfs(graph, 1);
