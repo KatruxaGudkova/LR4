@@ -10,6 +10,26 @@ function dfs(graph, start, visited = new Set()) {
   }
 }
 
+function dfsPathLength(graph, start, end) {
+  const stack = [[start, 0]];
+  const visited = new Set();
+
+  while (stack.length > 0) {
+    const [node, length] = stack.pop();
+
+    if (node === end) return length;
+
+    if (!visited.has(node)) {
+      visited.add(node);
+      for (const neighbor of graph[node] || []) {
+        stack.push([neighbor, length + 1]);
+      }
+    }
+  }
+
+  return -1; // путь не найден
+}
+
 // Пример графа
 const edges = [
   [4, 2],
@@ -26,6 +46,11 @@ for (const [u, v] of edges) {
   graph[u].push(v);
   graph[v].push(u);
 }
+
+// Проверка длины пути
+const startNode = 2;
+const endNode = 4;
+console.log(`Длина пути от ${startNode} до ${endNode}: ${dfsPathLength(graph, startNode, endNode)}`);
 
 // Запуск DFS
 dfs(graph, 1);
