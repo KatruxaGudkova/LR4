@@ -37,7 +37,7 @@ function dfsPathLength(graph, start, end) {
 }
 
 
-// Пример графа
+// Пример графаааааааааааа
 const edges = [
   [4, 2],
   [1, 3],
