@@ -53,7 +53,7 @@ for (const [u, v] of edges) {
   graph[v].push(u);
 }
 
-// Проверка длины пути
+// Задание длины пути
 const startNode = 2;
 const endNode = 999;
 // console.log(`Длина пути от ${startNode} до ${endNode}: ${dfsPathLength(graph, startNode, endNode)}`);
