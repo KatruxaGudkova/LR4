@@ -1,5 +1,5 @@
 // dfs.js
-
+// Обход графа в глубину (DFS)
 function dfs(graph, start, visited = new Set()) {
   visited.add(start);
   console.log(start);
@@ -10,7 +10,9 @@ function dfs(graph, start, visited = new Set()) {
   }
 }
 
+// Поиск длины пути между двумя вершинами с обработкой ошибок
 function dfsPathLength(graph, start, end) {
+  // Проверка: обе вершины должны быть в графе
   if (!(start in graph) || !(end in graph)) {
     throw new Error(`Одна или обе вершины (${start}, ${end}) отсутствуют в графе или некорректны`);
   }
