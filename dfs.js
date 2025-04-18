@@ -9,7 +9,6 @@ function dfs(graph, start, visited = new Set()) {
     }
   }
 }
-
 // Поиск длины пути, между двумя вершинами с обработкой ошибок
 function dfsPathLength(graph, start, end) {
   // Проверка: обе вершины должны быть в графе
@@ -36,7 +35,7 @@ function dfsPathLength(graph, start, end) {
   return -1; // path not found
 }
 
-
+let k=0;
 // Пример графаааааааааааа
 const edges = [
   [4, 2],
